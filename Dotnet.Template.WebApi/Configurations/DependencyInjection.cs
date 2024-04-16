@@ -7,6 +7,8 @@ using Dotnet.Template.Infra.Resources;
 using Microsoft.EntityFrameworkCore;
 using Dotnet.Template.Domain.Globalization;
 using Dotnet.Template.Infra.Mediator;
+using Dotnet.Templates.Domain.ActivityLogs;
+using Dotnet.Template.Data.Repository;
 
 namespace Dotnet.Template.WebApi.Configurations
 {
@@ -60,8 +62,11 @@ namespace Dotnet.Template.WebApi.Configurations
         public static void RegisterDomainDependencies(IServiceCollection services)
         {
             //Register at least one Domain Command Handler Class here
-            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetUsersCommandHandler).Assembly));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetActivityLogsCommandHandler).Assembly));
             services.AddScoped<IMediatorHandler, MediatorHandler>();
+
+            //DataBase Repositories
+            services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
         }
     }
 }
