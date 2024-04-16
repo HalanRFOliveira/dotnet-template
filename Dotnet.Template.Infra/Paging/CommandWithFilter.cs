@@ -10,18 +10,11 @@ namespace Dotnet.Template.Infra.Paging
       where TFilter : class, new()
       where TResultSet : class
     {
-
-        /// <summary>
-        /// Inicia uma nova instância da classe <see cref="CommandWithFilter{TFilter, TResultSet}"/>.
-        /// </summary>
         public CommandWithFilter()
         {
             Filter = new Filter<TFilter>();
         }
 
-        /// <summary>
-        /// Obtém ou define o filtro.
-        /// </summary>
         [FromQuery]
         public Filter<TFilter> Filter { get; set; }
 

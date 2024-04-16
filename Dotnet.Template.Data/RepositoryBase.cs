@@ -6,10 +6,6 @@ namespace Dotnet.Template.Data
     {
         protected readonly MySqlContext _dbContext;
 
-        /// <summary>
-        /// Initializes a new instance of the Entity class.
-        /// </summary>
-        /// <param name="unitOfWork">Unit of work.</param>
         protected RepositoryBase(MySqlContext dbContext)
         {
             _dbContext = dbContext;
