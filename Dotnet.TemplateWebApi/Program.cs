@@ -28,7 +28,7 @@ builder.Host.UseSerilog()
         config.AddJsonFile($"appsettings.{envName}.json", true);
     });
 
-// Add services to the container.
+// Add services to the container
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {

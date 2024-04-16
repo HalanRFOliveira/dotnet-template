@@ -6,6 +6,7 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Dotnet.Template.Infra.Resources;
 using Microsoft.EntityFrameworkCore;
 using Dotnet.Template.Domain.Globalization;
+using Dotnet.Template.Infra.Mediator;
 
 namespace Dotnet.Template.WebApi.Configurations
 {
@@ -44,10 +45,9 @@ namespace Dotnet.Template.WebApi.Configurations
 
             var serviceProvider = services.BuildServiceProvider();
 
-#pragma warning disable CS8601, CS8604  // Possível atribuição de referência nula.
             ResourceFactory.Factory = serviceProvider.GetService<IStringLocalizerFactory>();
             ResourceFactory.SetAssembly(typeof(GlobalizationConstants).Assembly.FullName);
-#pragma warning restore CS8601, CS8604 // Possível atribuição de referência nula.
+
 
             RegisterDomainDependencies(services);
 
@@ -59,7 +59,9 @@ namespace Dotnet.Template.WebApi.Configurations
         }
         public static void RegisterDomainDependencies(IServiceCollection services)
         {
-
+            //Register at least one Domain Class here
+            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetUsersCommandHandler).Assembly));
+            services.AddScoped<IMediatorHandler, MediatorHandler>();
         }
     }
 }
