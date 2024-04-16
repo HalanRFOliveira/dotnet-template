@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.18" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.18" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Dotnet.Template.Domain\Dotnet.Templates.Domain.csproj" />
+    <ProjectReference Include="..\Dotnet.Template.Infra\Dotnet.Template.Infra.csproj" />
   </ItemGroup>
 
 </Project>
