@@ -59,7 +59,7 @@ namespace Dotnet.Template.WebApi.Configurations
         }
         public static void RegisterDomainDependencies(IServiceCollection services)
         {
-            //Register at least one Domain Class here
+            //Register at least one Domain Command Handler Class here
             //services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetUsersCommandHandler).Assembly));
             services.AddScoped<IMediatorHandler, MediatorHandler>();
         }
