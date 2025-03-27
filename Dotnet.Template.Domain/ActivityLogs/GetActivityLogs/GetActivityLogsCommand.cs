@@ -1,11 +1,11 @@
 using Dotnet.Template.Domain.Globalization;
-using Dotnet.Template.Infra.Extensions;
 using Dotnet.Template.Infra.Paging;
+using Dotnet.Template.Infra.Extensions;
 using FluentValidation;
 
-namespace Dotnet.Templates.Domain.ActivityLogs
+namespace Dotnet.Template.Domain.ActivityLogs
 {
-    public class GetActivityLogsCommand : CommandWithFilter<GetActivityLogsFilter, GetActivityLogsCommandResult>
+    public class GetActivityLogsCommand : CommandWithFilter<PagedFilter<ActivityLogType>, GetActivityLogsCommandResult>
 	{
 		public override bool IsValid()
 		{

@@ -2,6 +2,9 @@ using Serilog;
 using Serilog.Events;
 using System.Globalization;
 using Dotnet.Template.WebApi.Configurations;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -15,7 +18,18 @@ Log.Logger = new LoggerConfiguration()
 var builder = WebApplication.CreateBuilder(args);
 
 //Add Authentication (Bearer Token, Microsoft, etc)
-//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme);
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetValue<string>("SecretKey"))),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 
 
 var envName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
@@ -41,7 +55,7 @@ builder.Services.AddCors(options =>
 });
 
 // Add your custom services
-//builder.Services.AddEmailService(builder.Configuration);
+builder.Services.AddEmailService(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

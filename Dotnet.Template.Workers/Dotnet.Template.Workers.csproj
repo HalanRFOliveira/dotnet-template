@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Quartz.Extensions.Hosting" Version="3.14.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Dotnet.Template.Infra\Dotnet.Template.Infra.csproj" />
+		<ProjectReference Include="..\Dotnet.Template.Domain\Dotnet.Template.Domain.csproj" />
+	</ItemGroup>
+
+</Project>

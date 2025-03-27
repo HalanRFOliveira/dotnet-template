@@ -1,14 +1,19 @@
-﻿using Serilog;
-using MySqlConnector;
-using Dotnet.Template.Data;
-using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Dotnet.Template.Infra.Resources;
-using Microsoft.EntityFrameworkCore;
+﻿using Dotnet.Template.Data;
+using Dotnet.Template.Data.Repositories;
+using Dotnet.Template.Domain.ActivityLogs;
 using Dotnet.Template.Domain.Globalization;
+using Dotnet.Template.Domain.Users;
+using Dotnet.Template.Infra.HttpContext;
+using Dotnet.Template.Infra.JwtTokenProvider;
 using Dotnet.Template.Infra.Mediator;
-using Dotnet.Templates.Domain.ActivityLogs;
-using Dotnet.Template.Data.Repository;
+using Dotnet.Template.Infra.PasswordService;
+using Dotnet.Template.Infra.Resources;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Localization;
+using MySqlConnector;
+using Serilog;
 
 namespace Dotnet.Template.WebApi.Configurations
 {
@@ -54,9 +59,8 @@ namespace Dotnet.Template.WebApi.Configurations
             RegisterDomainDependencies(services);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
             // In case of have an activity log configuration
-            //services.AddScoped<ActivityLogHelper>();
+            services.AddScoped<ActivityLogHelper>();
 
         }
         public static void RegisterDomainDependencies(IServiceCollection services)
@@ -65,8 +69,14 @@ namespace Dotnet.Template.WebApi.Configurations
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(GetActivityLogsCommandHandler).Assembly));
             services.AddScoped<IMediatorHandler, MediatorHandler>();
 
+            services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<IJwtTokenProvider, JwtTokenProvider>();
+            services.AddScoped<IHttpUserContext, HttpUserContext>();
+            services.AddScoped<IPasswordHasher<object>, PasswordHasher<object>>();
+
             //DataBase Repositories
             services.AddScoped<IActivityLogRepository, ActivityLogRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

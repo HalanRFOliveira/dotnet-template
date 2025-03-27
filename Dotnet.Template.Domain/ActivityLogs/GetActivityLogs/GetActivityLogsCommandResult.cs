@@ -1,4 +1,4 @@
-namespace Dotnet.Templates.Domain.ActivityLogs
+namespace Dotnet.Template.Domain.ActivityLogs
 {
     public class GetActivityLogsCommandResult
 	{

@@ -1,14 +1,12 @@
-﻿using Dotnet.Template.Infra.Paging;
-using Dotnet.Templates.Domain.ActivityLogs;
+﻿using Dotnet.Template.Domain.ActivityLogs;
+using Dotnet.Template.Infra.Paging;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dotnet.Template.Data.Repository
+namespace Dotnet.Template.Data.Repositories
 {
-    public class ActivityLogRepository : RepositoryBase, IActivityLogRepository
+    public class ActivityLogRepository(MySqlContext dbContext) : RepositoryBase(dbContext), IActivityLogRepository
     {
-        public ActivityLogRepository(MySqlContext dbContext) : base(dbContext) { }
-
-        public async Task<PagedResult<GetActivityLogsCommandResult>> GetActivityLogsAsync(Filter<GetActivityLogsFilter> filter)
+        public async Task<PagedResult<GetActivityLogsCommandResult>> GetActivityLogsAsync(Filter<PagedFilter<ActivityLogType>> filter)
         {
 
             var startAt = filter.Data?.PeriodStartAt ?? DateTime.Now.AddDays(-30);
@@ -33,7 +31,7 @@ namespace Dotnet.Template.Data.Repository
 
             var pagedData = await query
                 .Skip(filter.SkipCount)
-                .Take(filter.Limit)
+                .Take(filter.RowsPerPage)
                 .Select(p => new GetActivityLogsCommandResult
                 {
                     Id = p.Id,
@@ -44,8 +42,14 @@ namespace Dotnet.Template.Data.Repository
                 })
                 .ToListAsync();
 
-            return new PagedResult<GetActivityLogsCommandResult>(totalSize, filter.Limit, pagedData);
+            return new PagedResult<GetActivityLogsCommandResult>(totalSize, pagedData);
 
+        }
+
+        public async Task AddAsync(ActivityLog log)
+        {
+            await _dbContext.AddAsync(log);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

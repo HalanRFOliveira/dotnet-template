@@ -1,5 +1,4 @@
-﻿using Dotnet.Templates.Infra.CrossCutting.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dotnet.Template.Infra.CrossCutting.Domain
 {
@@ -7,5 +6,7 @@ namespace Dotnet.Template.Infra.CrossCutting.Domain
     {
         [Key]
         public TId Id { get; set; }
+        public DateTime AddDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
     }
 }
