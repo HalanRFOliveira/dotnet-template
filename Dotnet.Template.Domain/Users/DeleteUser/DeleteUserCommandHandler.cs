@@ -1,9 +1,7 @@
-﻿using Dotnet.Template.Domain;
-using Dotnet.Template.Domain.ActivityLogs;
-using Dotnet.Template.Domain.Users;
+﻿using Dotnet.Template.Domain.ActivityLogs;
 using Dotnet.Template.Infra.Messaging;
 
-namespace Deserv.Gap.Domain.Users
+namespace Dotnet.Template.Domain.Users
 {
     public class DeleteUserCommandHandler(
         IUserRepository userRepository,

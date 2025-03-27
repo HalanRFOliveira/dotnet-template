@@ -6,4 +6,14 @@
     <Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="112.1.0" />
+    <PackageReference Include="Serilog" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dotnet.Template.Data\Dotnet.Template.Data.csproj" />
+    <ProjectReference Include="..\Dotnet.Template.Domain\Dotnet.Template.Domain.csproj" />
+  </ItemGroup>
+
 </Project>
