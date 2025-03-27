@@ -1,5 +1,4 @@
-﻿using Dotnet.Templates.Infra.CrossCutting.Domain;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dotnet.Template.Infra.CrossCutting.Domain
 {

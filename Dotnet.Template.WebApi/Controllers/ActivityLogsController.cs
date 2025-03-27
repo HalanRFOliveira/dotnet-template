@@ -1,6 +1,6 @@
-﻿using Dotnet.Template.Infra.Mediator;
+﻿using Dotnet.Template.Domain.ActivityLogs;
+using Dotnet.Template.Infra.Mediator;
 using Dotnet.Template.Infra.Paging;
-using Dotnet.Templates.Domain.ActivityLogs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dotnet.Template.WebApi.Controllers

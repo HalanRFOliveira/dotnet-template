@@ -1,4 +1,4 @@
-﻿using Dotnet.Templates.Domain.ActivityLogs;
+﻿using Dotnet.Template.Domain.ActivityLogs;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dotnet.Template.Data

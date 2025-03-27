@@ -1,14 +1,14 @@
-﻿using Serilog;
-using MySqlConnector;
-using Dotnet.Template.Data;
-using Microsoft.Extensions.Localization;
-using Microsoft.Extensions.Diagnostics.HealthChecks;
-using Dotnet.Template.Infra.Resources;
-using Microsoft.EntityFrameworkCore;
+﻿using Dotnet.Template.Data;
+using Dotnet.Template.Data.Repository;
+using Dotnet.Template.Domain.ActivityLogs;
 using Dotnet.Template.Domain.Globalization;
 using Dotnet.Template.Infra.Mediator;
-using Dotnet.Templates.Domain.ActivityLogs;
-using Dotnet.Template.Data.Repository;
+using Dotnet.Template.Infra.Resources;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Localization;
+using MySqlConnector;
+using Serilog;
 
 namespace Dotnet.Template.WebApi.Configurations
 {

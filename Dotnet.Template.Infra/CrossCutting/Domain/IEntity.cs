@@ -1,4 +1,4 @@
-﻿namespace Dotnet.Templates.Infra.CrossCutting.Domain
+﻿namespace Dotnet.Template.Infra.CrossCutting.Domain
 {
     public interface IEntity
     {

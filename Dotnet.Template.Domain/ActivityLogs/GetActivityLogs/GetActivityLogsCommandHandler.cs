@@ -1,7 +1,7 @@
 ﻿using Dotnet.Template.Infra.Messaging;
 using Dotnet.Template.Infra.Paging;
 
-namespace Dotnet.Templates.Domain.ActivityLogs
+namespace Dotnet.Template.Domain.ActivityLogs
 {
     public class GetActivityLogsCommandHandler : CommandHandler<GetActivityLogsCommand, PagedResult<GetActivityLogsCommandResult>>
 	{

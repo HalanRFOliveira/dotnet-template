@@ -2,7 +2,7 @@
 
 namespace Dotnet.Template.Infra.Resources
 {
-    public class ResourceFactory
+    public static class ResourceFactory
     {
         private static string _asm;
 
@@ -13,14 +13,14 @@ namespace Dotnet.Template.Infra.Resources
 
         public static IStringLocalizerFactory Factory { get; set; }
 
-        private static readonly Dictionary<string, IStringLocalizer> _localizers = new();
+        private static Dictionary<string, IStringLocalizer> localizers = new();
 
         public static IStringLocalizer Build(string resource)
         {
-            if (!_localizers.Any(k => k.Key == resource))
-                _localizers[resource] = Factory.Create(resource, _asm);
+            if (!localizers.Any(k => k.Key == resource))
+                localizers[resource] = Factory.Create(resource, _asm);
 
-            return _localizers[resource];
+            return localizers[resource];
         }
     }
 }
