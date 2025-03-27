@@ -6,5 +6,7 @@ namespace Dotnet.Template.Infra.CrossCutting.Domain
     {
         [Key]
         public TId Id { get; set; }
+        public DateTime AddDate { get; set; }
+        public DateTime? UpdateDate { get; set; }
     }
 }

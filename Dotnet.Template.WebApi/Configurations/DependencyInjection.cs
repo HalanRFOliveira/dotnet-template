@@ -1,5 +1,5 @@
 ﻿using Dotnet.Template.Data;
-using Dotnet.Template.Data.Repository;
+using Dotnet.Template.Data.Repositories;
 using Dotnet.Template.Domain.ActivityLogs;
 using Dotnet.Template.Domain.Globalization;
 using Dotnet.Template.Infra.Mediator;

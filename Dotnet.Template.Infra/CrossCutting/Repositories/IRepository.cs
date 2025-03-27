@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Dotnet.Template.Infra.CrossCutting.Repository
+namespace Dotnet.Template.Infra.CrossCutting.Repositories
 {
 	public interface IRepository<TEntity>
 	{

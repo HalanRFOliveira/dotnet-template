@@ -2,7 +2,7 @@
 using Dotnet.Template.Infra.Paging;
 using Microsoft.EntityFrameworkCore;
 
-namespace Dotnet.Template.Data.Repository
+namespace Dotnet.Template.Data.Repositories
 {
     public class ActivityLogRepository(MySqlContext dbContext) : RepositoryBase(dbContext), IActivityLogRepository
     {
@@ -44,6 +44,12 @@ namespace Dotnet.Template.Data.Repository
 
             return new PagedResult<GetActivityLogsCommandResult>(totalSize, pagedData);
 
+        }
+
+        public async Task AddAsync(ActivityLog log)
+        {
+            await _dbContext.AddAsync(log);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
